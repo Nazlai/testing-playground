@@ -9,6 +9,9 @@ const webpackConfig = {
     path: path.resolve(__dirname, "./dist"),
     filename: "index.bundle.js",
   },
+  alias: {
+    "@screen": path.resolve(__dirname, "./src/screen"),
+  },
   resolve: {
     extensions: [".js", ".ts", ".tsx", ".scss"],
   },
