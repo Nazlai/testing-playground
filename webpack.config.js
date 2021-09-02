@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const {CleanWebpackPlugin} = require("clean-webpack-plugin");
 const path = require("path");
 
 const webpackConfig = {
@@ -9,10 +9,10 @@ const webpackConfig = {
     path: path.resolve(__dirname, "./dist"),
     filename: "index.bundle.js",
   },
-  alias: {
-    "@screen": path.resolve(__dirname, "./src/screen"),
-  },
   resolve: {
+    alias: {
+      "@screen": path.resolve(__dirname, "./src/screen"),
+    },
     extensions: [".js", ".ts", ".tsx", ".scss"],
   },
   module: {
@@ -35,7 +35,10 @@ const webpackConfig = {
   },
   devServer: {
     historyApiFallback: true,
-    open: true,
+    open: false,
+    proxy: {
+      "/api/": "http://localhost:3000",
+    },
   },
   devtool: "source-map",
   plugins: [
